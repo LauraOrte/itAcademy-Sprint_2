@@ -1,0 +1,42 @@
+-- TIENDA
+SELECT nombre FROM producto;
+SELECT nombre, precio FROM producto;
+SELECT * FROM producto;
+SELECT p.nombre, p.precio precioEuros, (precio*1.14) precioDolares FROM producto p;
+SELECT p.nombre nombreProducto, p.precio Euros, (precio*1.14) Dolares FROM producto p;
+SELECT UPPER(nombre), precio FROM producto;
+SELECT LOWER(nombre), precio FROM producto;
+SELECT nombre, LEFT(UPPER(nombre),2) as resultado FROM fabricante;
+SELECT nombre, ROUND(precio) as redondeado FROM producto;
+SELECT nombre, TRUNCATE(precio,0) as truncado FROM producto;
+SELECT f.codigo FROM producto as p INNER JOIN fabricante as f ON f.codigo = p.codigo_fabricante;
+SELECT DISTINCT f.codigo FROM producto as p INNER JOIN fabricante as f ON f.codigo = p.codigo_fabricante;
+SELECT nombre FROM fabricante ORDER BY nombre;
+SELECT nombre FROM fabricante ORDER BY nombre DESC;
+SELECT nombre, precio FROM producto ORDER BY nombre ASC, precio DESC;
+SELECT * FROM fabricante LIMIT 5;
+SELECT * FROM fabricante LIMIT 3,2;
+SELECT nombre, precio FROM producto ORDER BY precio ASC LIMIT 1;
+SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+SELECT nombre FROM producto WHERE codigo_fabricante = 2;
+SELECT p.nombre as nombreProducto, p.precio as precio, f.nombre as nombrefabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo;
+SELECT p.nombre as nombreProducto, p.precio as precio, f.nombre as nombrefabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo ORDER BY nombreFabricante;
+SELECT p.codigo as codigoProducto, p.nombre as nombreProducto, f.codigo as codigoFabricante, f.nombre as nombreFabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo;
+SELECT p.nombre as nombreProducto, p.precio as precio, f.nombre as nombrefabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo ORDER BY precio LIMIT 1;
+SELECT p.nombre as nombreProducto, p.precio as precio, f.nombre as nombrefabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo ORDER BY precio DESC LIMIT 1;
+SELECT p.nombre FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Lenovo';
+SELECT p.nombre, p.precio FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Crucial' and p.precio > 200;
+SELECT p.nombre FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Asus' OR f.nombre = 'Hewlett-Packard' OR f.nombre = 'Seagate';
+SELECT p.nombre FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre IN ('Asus', 'Hewlett-Packard', 'Seagate');
+SELECT p.nombre, p.precio, f.nombre as nombreFabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre LIKE '%e';
+SELECT p.nombre, p.precio, f.nombre as nombreFabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre LIKE '%w%';
+SELECT p.nombre as nombreProducto, p.precio, f.nombre as nombreFabricante FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE p.precio >= 180 ORDER BY p.precio DESC, p.nombre;
+SELECT f.codigo, f.nombre FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo;
+SELECT f.nombre as nombreFabricante, p.nombre as nombreProducto FROM producto as p RIGHT JOIN fabricante as f ON p.codigo_fabricante = f.codigo;
+SELECT f.nombre as nombreFabricante, p.nombre as nombreProducto FROM producto as p RIGHT JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE p.nombre IS NULL;
+SELECT p.nombre as nombreProducto, f.nombre as nombreFabricante FROM producto as p LEFT JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Lenovo';
+-- 37
+SELECT p.nombre as nombreProducto, f.nombre as nombreFabricante, p.precio FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Lenovo' ORDER BY p.precio DESC LIMIT 1;
+SELECT p.nombre as nombreProducto, f.nombre as nombreFabricante, p.precio FROM producto as p INNER JOIN fabricante as f ON p.codigo_fabricante = f.codigo WHERE f.nombre = 'Lenovo' ORDER BY p.precio = 'Hewlett-Packard' LIMIT 1;
+SELECT p.nombre FROM producto p INNER JOIN fabricante f ON f.codigo = p.codigo_fabricante WHERE f.nombre = 'Lenovo' ORDER BY p.precio DESC LIMIT 1;
+-- 41
